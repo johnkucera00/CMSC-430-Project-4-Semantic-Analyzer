@@ -1,0 +1,50 @@
+-- This tests duplicate variables, non-numeric type
+-- used in arithmetic expression, and other 
+-- type mismatches with arithmetic, logical,
+-- and relational expressions.
+
+function test3 a: integer, b: boolean returns real;
+	c: integer is 10;
+	c: boolean is true;
+begin
+	case a is
+		when 1 => 
+			if d > c then
+				1.1 + true;
+			else
+				false + 2.2;
+			endif;
+		when 2 =>
+			if c >= false or true <= b then
+				3.3 + 5;
+			else
+				4.4 + 6;
+			endif;
+		when 3 =>
+			if a or c then
+				5.5;
+			else
+				6.6;
+			endif;
+		when 4 =>
+			if a and c then
+				7.7;
+			else
+				8.8;
+			endif;
+		when 5 =>
+			if not 6 then
+				9.9;
+			else
+				10.1;
+			endif;
+		when 6 =>
+			reduce *
+				2;
+				6;
+				true;
+			endreduce;
+		others =>
+			100;
+	endcase;
+end;

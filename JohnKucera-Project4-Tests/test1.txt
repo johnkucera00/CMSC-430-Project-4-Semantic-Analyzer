@@ -1,0 +1,20 @@
+-- This tests errors raised from boolean/numeric mixing, 
+-- mismatch in if-then types, if-condition is not
+-- boolean, duplicate identifier, mismatch in
+-- return types, narrowing initialization.
+
+function test1 a: real returns boolean;
+	b: boolean is 5;
+	c: boolean is 7.6;
+	d: integer is false;
+	e: real is true;
+	f: integer is 6.5;
+	g: real is 6;
+	g: real is 6.5;
+begin
+	if a + 8 then
+		b;
+	else
+		e;
+	endif;
+end;
